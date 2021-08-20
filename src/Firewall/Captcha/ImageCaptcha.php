@@ -454,7 +454,9 @@ class ImageCaptcha extends CaptchaProvider
      */
     private function getImageResource()
     {
-        if (!is_resource($this->im)) {
+        if ($this->im instanceof \GdImage || is_resource($this->im)) {
+            return $this->im;
+        } else {
 
             // @codeCoverageIgnoreStart
             throw new RuntimeException(
@@ -462,6 +464,7 @@ class ImageCaptcha extends CaptchaProvider
             );
             // @codeCoverageIgnoreEnd
         }
+    }
 
         return $this->im;
     }

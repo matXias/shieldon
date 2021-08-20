@@ -431,9 +431,9 @@ trait SetupTrait
 
         if ($sessionLimitSetting['enable']) {
 
-            $onlineUsers = $sessionLimitSetting['config']['count'];       // default: 100
-            $alivePeriod = $sessionLimitSetting['config']['period'];      // default: 300
-            $isUniqueIp  = $sessionLimitSetting['config']['unique_only']; // false
+            $onlineUsers = (int)$sessionLimitSetting['config']['count'];       // default: 100
+            $alivePeriod = (int)$sessionLimitSetting['config']['period'];      // default: 300
+            $isUniqueIp  = (bool)$sessionLimitSetting['config']['unique_only']; // false
 
             $this->kernel->limitSession($onlineUsers, $alivePeriod, $isUniqueIp);
         }
